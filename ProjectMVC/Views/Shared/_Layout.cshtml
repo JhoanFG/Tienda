@@ -1,0 +1,150 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Site -->
+    <link rel="stylesheet" href="~/Content/Site.css">   @* "link" Hace referencia a CSS *@
+    <script src="~/Scripts/Site.js"></script>           @* "script" Hace referencia a JavaSrip *@
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- ============================================================== -->
+        <!-- Sidebar -->
+        <!-- ============================================================== -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">
+                LinkGShop 2019
+            </div>
+            <div class="list-group list-group-flush">
+                @if (Request.IsAuthenticated)
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Roles", "Index", "RolesAdmin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                        @Html.ActionLink("Usuarios", "Index", "UsersAdmin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                        @Html.ActionLink("Acerca de", "About", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                        @Html.ActionLink("Contactos", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                        @Html.ActionLink("Tododos los Productos", "Index", "Products", null, new { @class = "list-group-item list-group-item-action bg-light" })
+                    }
+                    if (User.IsInRole("Member"))
+                    {
+                        @Html.ActionLink("Acerca de", "About", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                        @Html.ActionLink("Contactos", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                        @Html.ActionLink("Tododos los Productos", "Index", "Products", null, new { @class = "list-group-item list-group-item-action bg-light" })
+                    }
+                }
+                else
+                {
+                    @Html.ActionLink("Acerca de", "About", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                    @Html.ActionLink("Contactos", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                    @Html.ActionLink("Tododos los Productos", "Index", "Products", null, new { @class = "list-group-item list-group-item-action bg-light" })
+                }
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-danger border-bottom">
+
+                @*Barra Superior el "bg-color de la barra"*@
+                <i class="fas fa-align-justify" id="menu-toggle"></i>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav"></div>                
+
+                @* Categorias *@
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categorias
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" @Html.ActionLink("VideoJuegos", "IndexCategories", "Products", new { id = 1 }, new { @class = "btn btn-primary btn-sm" })</a>
+                        <a class="dropdown-item" @Html.ActionLink("Ropa", "IndexCategories", "Products", new { id = 2 }, new { @class = "btn btn-primary btn-sm" })</a>
+                        <a class="dropdown-item" @Html.ActionLink("Tecnologia", "IndexCategories", "Products", new { id = 3 }, new { @class = "btn btn-primary btn-sm" })</a>
+                    </div>
+                </div>
+                @* Fin *@
+
+                <div>
+
+                </div>
+
+                <ul class="navbar-nav ml-auto ml-md-0">
+                    <li class="nav-item dropdown no-arrow">
+
+
+
+
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle fa-fw"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "dropdown-item" })</a>
+                            <a class="dropdown-item" @Html.ActionLink("Iniciar Sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "dropdown-item" })</a>
+                            <div class="dropdown-divider"></div>
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "dropdown-item" }))
+                                {
+                                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+                                    <br />
+                                    @Html.AntiForgeryToken()
+                            <li>
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+                            </li>
+                                }
+                            }
+                        </div>
+                    </li>
+                </ul>
+
+                @*Barra de Busqueda*@
+                @*<div class="navbar navbar-white bg-light justify-content-between">
+                        <a class="navbar-brand"></a>
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-1" type="search" placeholder="Buscar Juegos" aria-label="Buscar">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                        </form>
+                    </div>*@
+
+            </nav>
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page Content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- Menu Toggle Script -->
+    <!-- ============================================================== -->
+    <script>
+    $("#menu-toggle").click(function (e) {
+         e.preventDefault();
+         $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

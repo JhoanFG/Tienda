@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7E7303A-7A9E-40BC-9C9D-6460C3E459AE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectMVC.Logica</RootNamespace>
+    <AssemblyName>ProjectMVC.Logica</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BL\Catalogs.cs" />
+    <Compile Include="BL\Categories.cs" />
+    <Compile Include="BL\Customer.cs" />
+    <Compile Include="BL\MethodPayment.cs" />
+    <Compile Include="BL\Products.cs" />
+    <Compile Include="BL\Sale.cs" />
+    <Compile Include="Models\BindingModels\CustomerBindingModel.cs" />
+    <Compile Include="Models\BindingModels\EmployeesBindingModel.cs" />
+    <Compile Include="Models\BindingModels\ProductsBindingModel.cs" />
+    <Compile Include="Models\BindingModels\SalesBindingModel.cs" />
+    <Compile Include="Models\DB\AspNetRoles.cs" />
+    <Compile Include="Models\DB\AspNetUserClaim.cs" />
+    <Compile Include="Models\DB\AspNetUserLogins.cs" />
+    <Compile Include="Models\DB\AspNetUsers.cs" />
+    <Compile Include="Models\DB\Catalogs.cs" />
+    <Compile Include="Models\DB\Categories.cs" />
+    <Compile Include="Models\DB\Cities.cs" />
+    <Compile Include="Models\DB\Customer.cs" />
+    <Compile Include="Models\DB\DocumentTypes.cs" />
+    <Compile Include="Models\DB\MethodPayment.cs" />
+    <Compile Include="Models\DB\ProductPhotos.cs" />
+    <Compile Include="Models\DB\Products.cs" />
+    <Compile Include="Models\DB\Sales.cs" />
+    <Compile Include="Models\DB\SalesDetails.cs" />
+    <Compile Include="Models\DB\States.cs" />
+    <Compile Include="Models\ViewModels\CategoriesViewModel.cs" />
+    <Compile Include="Models\ViewModels\CustomerViewModel.cs" />
+    <Compile Include="Models\ViewModels\EmployeesViewModel.cs" />
+    <Compile Include="Models\ViewModels\MethodPaymentViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductsViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectMVC.DAL\ProjectMVC.DAL.csproj">
+      <Project>{8003c8fb-241b-41d0-8223-0bfaaa90f419}</Project>
+      <Name>ProjectMVC.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

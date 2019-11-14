@@ -1,0 +1,29 @@
+﻿@model List<ProjectMVC.Logica.Models.ViewModels.CatalogsIndexViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            @Html.ActionLink("Inicio", "Index", "Home")
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Pagina Principal</li>
+    </ol>
+</nav>
+
+<h2>Categorias</h2>
+
+<br />
+
+<form>
+    <div class="form-row">
+        <div class="col-md-3">
+            @Html.ActionLink("VideoJuegos", "VideoGames", "Categories", null, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <div class="col-md-3">
+            @Html.ActionLink("Ropa", "Clothes", "Categories", null, new { @class = "btn btn-primary btn-sm" })
+        </div>
+    </div>
+</form>

@@ -1,0 +1,55 @@
+﻿@model List<ProjectMVC.Logica.Models.ViewModels.ProductsIndexViewModel>
+
+@{
+    ViewBag.Title = "VideoGames";
+}
+
+<h2>VideoJuegos</h2>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            @Html.ActionLink("Categorias", "Index", "Catalogs")
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Regresar</li>
+    </ol>
+</nav>
+
+@{ int colum = 1; }
+@foreach (var item in Model)
+{
+    if (colum == 1)
+    {
+        @Html.Raw("<div class='form-row'>");
+    }
+
+    <div class="cold-md-4">
+        <div class="card bg-light" style="width: 18rem;padding:10px">
+            <img src="~/Images/Products/@item.Guid@item.Extension" class="card-img-top" alt="..." width="150px" height="260px">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <p class="card-text">@item.Description.Substring(0, item.Description.Length > 120 ? 120 : item.Description.Length)</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@item.Price</li>
+                </ul>
+                @*@Html.ActionLink("Ver Detalles", "Edit", "Products", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })*@
+
+                @*@Html.ActionLink(" ", "Edit", "Products", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-edit" })*@
+                @Html.ActionLink("Detalles", "Details", "Products", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-info-circle" })
+                @*@Html.ActionLink(" ", "Delete", "Products", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-trash-alt" })*@
+
+            </div>
+        </div>
+    </div>
+
+    if (colum == 3)
+    {
+        colum = 0;
+        @Html.Raw("</div>")
+    }
+    colum++;
+
+
+}
+
+ @* Plan B *@

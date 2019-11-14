@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "ShippingCost";
+}
+
+<h2>ShippingCost</h2>
+
+<div class="form-row">
+    <div class="col-md-6">
+
+        <label>¿Cómo quieres recibir o retirar tu compra?</label>
+        @ViewBag.Customer.Address
+
+        @Html.ActionLink("Retiro en domicilio del vendedor",
+                        "Sales",
+                        "MethodPayment",
+                        new { shippingCost = 0},
+                        new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("Normal a domicilio",
+                        "Sales",
+                        "MethodPayment",
+                        new { shippingCost = @ViewBag.Product.ShippingCost},
+                        new { @class = "btn btn-primary" })
+        @ViewBag.Product.ShippingCost
+
+    </div>
+</div>

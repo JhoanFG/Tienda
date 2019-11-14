@@ -1,0 +1,32 @@
+﻿@model IdentitySample.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+<h4>Use otro servicio para iniciar sesión.</h4>
+<hr />
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0)
+    {
+        <div>
+            <p>
+                No hay servicios de autenticación externos configurados. Ingrese a <a href="http://go.microsoft.com/fwlink/?LinkId=313242">Microsoft</a>
+                para obtener detalles sobre cómo configurar esta aplicación ASP.NET para admitir el inicio de sesión a través de servicios externos.
+            </p>
+        </div>
+    }
+    else
+    {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p>
+                    @foreach (AuthenticationDescription p in loginProviders)
+                    {
+                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                    }
+                </p>
+            </div>
+        }
+    }
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d1641c400430413bb1d0d0a2704baf2f" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.AspNetUsers" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Categories" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Cities" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Customer" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.DocumentTypes" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.MethodPayment" Width="1.5" PointX="11.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.ProductPhotos" Width="1.5" PointX="12.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Products" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.SaleDetails" Width="1.5" PointX="15.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Sales" Width="1.5" PointX="13.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.States" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ShopModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Customer_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Customer_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Customer_DocumentTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Products_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Sales_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Sales_MethodPayment" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ProductPhotos_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Products_States" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_SaleDetails_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_SaleDetails_Sales" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShopModel.Catalogs" Width="1.5" PointX="3.375" PointY="0.75" />
+        <AssociationConnector Association="ShopModel.FK_Catalogs_Categories" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

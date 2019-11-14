@@ -1,0 +1,37 @@
+﻿@model ProjectMVC.Logica.Models.BindingModels.EmployeesCreateBindingModel
+
+<h1>Create</h1>
+
+@if (ViewBag.Name != null)
+{
+    <label class="text-success">@ViewBag.Name</label>
+}
+
+<form method="post" action="/Employees/Create">
+
+    <div class="form-row">
+        <div class="col-md-12">
+            @Html.LabelFor(m => m.Id)
+            @Html.EditorFor(m => m.Id, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-12">
+            @Html.LabelFor(m => m.FirstName)
+            @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-12">
+            @Html.LabelFor(m => m.SecondName)
+            @Html.EditorFor(m => m.SecondName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.SecondName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br/>
+    <input type="submit" value="Create" class="btn btn-primary" />
+</form>

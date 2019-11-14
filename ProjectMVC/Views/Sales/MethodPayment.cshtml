@@ -1,0 +1,30 @@
+﻿@model ProjectMVC.Logica.Models.BindingModels.SalesMethodPaymentBindingModel
+
+    @{
+        ViewBag.Title = "MethodPayment";
+    }
+
+    <h2>MethodPayment</h2>
+
+<form action="/Sales/Sale" method="post">
+    <div class="form-row">
+        <div class="col-md-6">
+
+            <label>¿Cómo quieres pagar?</label>
+            @Html.DropDownListFor(m => m.MethodPaymentId,
+                               new SelectList(ViewBag.MethodPayments, "Id", "Name"),
+                               new { @class = "form-control" })
+
+            <input type="submit" value="Continuar" class="btn btn-primary" />
+
+        </div>
+        <div class="col-md-6">
+            <label>@ViewBag.Product.Name</label>
+            <label>Cantidad: 1</label>
+            <label>Producto @ViewBag.Product.Price</label>
+            <label>Envío @ViewBag.Product.ShippingCost</label>
+
+            <label>Pagas @((double)@ViewBag.Product.Price + (double)@ViewBag.Product.ShippingCost)</label>
+        </div>
+    </div>
+</form>

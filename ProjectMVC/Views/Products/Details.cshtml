@@ -1,0 +1,67 @@
+﻿@model ProjectMVC.Logica.Models.ViewModels.ProductsDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h2>Detalles Del Producto</h2>
+    </div>
+</section>
+
+@{ var item = Model; }
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <!-- Page Content -->
+    <div class="col-md-12">
+        @Html.ActionLink(" ", "Index", "Products", null, new { @class = "btn btn-primary fas fa-reply" })
+    </div>
+    <div class="container">
+        <div class="form-row">
+            <div class="col-md-4">
+                <div class="card mt-4">
+                    <img src="~/Images/Products/@item.Guid@item.Extension" class="card-img-top" alt="..." width="150px" height="400px">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Nombre: @Html.DisplayFor(m => m.Name)</h3>
+                        <h5>Precio: $@Html.DisplayFor(m => m.Price) COP</h5>
+                        <h5>Costo de Envio: $@Html.DisplayFor(m => m.ShippingCost) COP</h5>
+                        <h5>Garantia de @Html.DisplayFor(m => m.Warranty)</h5>
+                        <h5>Cantidad: @Html.DisplayFor(m => m.Quantity)</h5>
+                        <h5>Descripcion:</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.Description)</p>
+                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                        4.0 stars
+                        <br />
+                        <br />
+                        <div>
+                            @if (Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Comprar", "Sales", "ShippingCost", null, new { @class = "btn btn-primary" })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <!-- /.container -->
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Utap 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Roles de Usuario</h1>
+    </div>
+</section>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            @Html.ActionLink("Inicio", "Index", "Home")
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Pagina Principal</li>
+    </ol>
+</nav>
+
+<p>
+    @Html.ActionLink(" ", "Create", null, new { @class = "btn btn-primary fas fa-plus-circle" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-edit" })
+                @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-info-circle" })
+                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-trash-alt" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+<hr class="featurette-divider">
+<footer class="py-5 bg-light">
+    <div class="container">
+        <p class="m-0 text-center text-dark">Copyright &copy; Utap 2019</p>
+    </div>
+    <!-- /.container -->
+</footer>
